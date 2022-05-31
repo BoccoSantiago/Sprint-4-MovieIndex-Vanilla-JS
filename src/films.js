@@ -32,10 +32,11 @@ function orderAlphabetically(array) {
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {
   let movies = array.map(movies => movies);
-  let sortYear = movies.sort((a, b) => a.year - b.year);
-  let sortAlpha = sortYear.sort((a, b) => a.title.localeCompare(b.title));
-  console.log(sortAlpha)
-  return sortAlpha
+  let sort = movies.sort((a, b) => {
+    return a.year - b.year || a.title.localeCompare(b.title)});
+  //let sortAlpha = sortYear.sort((a, b) => a.title.localeCompare(b.title));
+  console.log(sort)
+  return sort
 }
 
 // Exercise 6: Calculate the average of the movies in a category
