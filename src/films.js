@@ -75,15 +75,20 @@ function hoursToMinutes(array) {
 
     let totalTime = hours * 60 + minutes;
     //console.log('total:', totalTime);
-    return { ...movies, duration: totalTime };
+    return {...movies, duration: totalTime };
   });
   console.log(result);
   return result;
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+// Exercise 8: Get the best film of a year
+function bestFilmOfYear(array, year) {
+  let movieYear = array.filter((movies) => year === movies.year);
+  let sort = movieYear.sort((a, b) => b.score - a.score);
+  let bestMovie = sort.slice(0, 1);
+  //console.log(bestMovie)
+  return bestMovie;
 }
 
 
