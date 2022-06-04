@@ -55,12 +55,30 @@ function orderByYear(array) {
 
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes(array) {
-  let totalMovies = array.map(movies => movies);
+// Exercise 7: Modify the duration of movies to minutes
 
-   
-  
-  console.log(totalMovies)
+function hoursToMinutes(array) {
+  let result = [...array].map((movies) => {
+    let movieDuration = movies.duration;
+    let indexHours = movieDuration.indexOf('h');
+    //console.log('indexHours: ', indexHours);
+    let indexMinutes = movieDuration.indexOf('min');
+    //console.log('indexMinutes: ', indexMinutes);
+    let hours = parseInt(movieDuration.slice(0, indexHours).trim());
+    //console.log('hours: ', hours);
+    let minutes = 0;
+    if (indexMinutes !== -1) {
+      minutes = parseInt(
+        movieDuration.slice(indexHours + 1, indexMinutes).trim()
+      );
+    }
+
+    let totalTime = hours * 60 + minutes;
+    //console.log('total:', totalTime);
+    return { ...movies, duration: totalTime };
+  });
+  console.log(result);
+  return result;
 }
 
 // Exercise 8: Get the best film of a year
